@@ -1,0 +1,104 @@
+body{
+    font-family: 'Times New Roman', Times, serif;
+    margin: 20px;
+    padding: 0;
+    background-color: #eef2f7;
+    transition: background-color 0.3s ease-in-out;
+}
+
+/* Smooth transition on page background hover */
+body:hover {
+    background-color: #dde4eb;
+}
+
+h1{
+    text-align: center;
+    color: #2c3e50;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    font-size: 36px;
+    margin-bottom: 30px;
+}
+
+/* Form styling */
+form{
+    max-width: 600px;
+    margin: auto;
+    background: linear-gradient(135deg, #e8f0f8, #f9f9f9);
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    padding: 30px;
+    transition: box-shadow 0.3s ease;
+}
+
+form:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+}
+
+fieldset{
+    border: 2px solid #5533aa;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: #f0f8ff;
+    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+legend{
+    font-weight: bold;
+    text-align: left;
+    color: #2c3e50;
+    font-size: 18px;
+    background-color: #eef2f7;
+    padding: 4px 8px;
+    border-radius: 4px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+label{
+    display: block;
+    margin-top: 10px;
+    color: #2c3e50;
+    font-size: 16px;
+}
+
+input, textarea{
+    width: calc(100% - 2px);
+    padding: 10px;
+    margin-top: 8px;
+    border: 1px solid #5fa6db;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 16px;
+    transition: border-color 0.3s ease-in-out;
+}
+
+input:focus, textarea:focus{
+    border-color: #341097;
+    box-shadow: 0 0 8px rgba(79, 14, 136, 0.5);
+    outline: none;
+}
+
+button{
+    display: inline-block;
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(90deg, rgba(79, 14, 136, 0.8), rgba(52, 152, 219, 0.8));
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 20px;
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    transition: background 0.3s, transform 0.3s ease;
+}
+
+button:hover{
+    background: linear-gradient(90deg, #520dbf, #3498bd);
+    transform: scale(1.05);
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
