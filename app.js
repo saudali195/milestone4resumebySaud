@@ -1,49 +1,38 @@
-var _a;
-(_a = document.getElementById("Resume")) === null || _a === void 0 ? void 0 : _a.addEventListener("submit", function (event) {
-    var _a, _b, _c, _d, _e, _f;
-    event.preventDefault(); // Prevent form from submitting
-    // Collect input data with null-checking
-    var name = ((_a = document.getElementById("name")) === null || _a === void 0 ? void 0 : _a.value) || '';
-    var email = ((_b = document.getElementById("email")) === null || _b === void 0 ? void 0 : _b.value) || '';
-    var phone = ((_c = document.getElementById("phone")) === null || _c === void 0 ? void 0 : _c.value) || '';
-    var education = ((_d = document.getElementById("education")) === null || _d === void 0 ? void 0 : _d.value) || '';
-    var experience = ((_e = document.getElementById("experience")) === null || _e === void 0 ? void 0 : _e.value) || '';
-    var skills = ((_f = document.getElementById("skills")) === null || _f === void 0 ? void 0 : _f.value) || '';
-    // Create the resume template
-    var resume = "\n    <div id=\"resumeOutput\" style=\"font-family: Times, serif; padding: 20px; background-color: #f8f9fa;\">\n        <h2><span id =\"edit-name\" class= \"editable\"> ".concat(name, " </span></h2>\n        <p><strong>Email:</strong> <span id =\"edit-edit\" class= \"editable\"> ").concat(email, " </span> </p>\n        <p><strong>Phone:</strong> <span id =\"edit-phone\" class= \"editable\"> ").concat(phone, " </span> </p>\n\n        <h3>Education</h3>\n        <p id =\"edit-education\" class= \"editable\">").concat(education, "</p>\n\n        <h3>Work Experience</h3>\n        <p id =\"edit-experience\" class= \"editable\">").concat(experience, "</p>\n        \n        <h3>Skills</h3>\n        <p id =\"edit-skills\" class= \"editable\">").concat(skills, "</p>\n    </div>\n    ");
-    // Remove the previous resume if it exists
-    var outputDiv = document.getElementById("resumeOutput");
-    if (outputDiv) {
-        outputDiv.remove();
-        makeEditable();
+document.getElementById('ResumeForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent form from refreshing the page
+
+    // Get form field values
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const phone = document.getElementById('phone').value;
+    const address = document.getElementById('address').value;
+    const education = document.getElementById('education').value;
+    const experience = document.getElementById('experience').value;
+    const skills = document.getElementById('skills').value;
+
+    // Handle Profile Picture
+    const profilePictureInput = document.getElementById('profilePicture');
+    let profilePictureURL = '';
+
+    if (profilePictureInput && profilePictureInput.files && profilePictureInput.files[0]) {
+        const profilePictureFile = profilePictureInput.files[0];
+        profilePictureURL = URL.createObjectURL(profilePictureFile); // Create a URL for the image
     }
-    // Append the new resume to the body
-    outputDiv = document.createElement("div");
-    outputDiv.innerHTML = resume;
-    document.body.appendChild(outputDiv);
+
+    // Generate resume output
+    const resumeContainer = document.getElementById('resumeOutputContainer');
+    resumeContainer.innerHTML = `
+        <h3>${name}</h3>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Phone:</strong> ${phone}</p>
+        <p><strong>Address:</strong> ${address}</p>
+        <h4>Education</h4>
+        <p>${education}</p>
+        <h4>Experience</h4>
+        <p>${experience}</p>
+        <h4>Skills</h4>
+        <p>${skills}</p>
+        <h4>Profile Picture</h4>
+        <img src="${profilePictureURL}" alt="Profile Picture" style="width: 150px; height: 150px; object-fit: cover; border: 2px solid #ccc;">
+    `;
 });
-function makeEditable() {
-    var editableElements = document.querySelectorAll('.editable');
-    editableElements.forEach(function (element) {
-        element.addEventListener('click', function () {
-            var _a;
-            var currentElement = element;
-            var currentValue = currentElement.textContent || "";
-            //replace Content 
-            if (currentElement.tagName === "P" || currentElement.tagName === 'SPAN') {
-                var input_1 = document.createElement('input');
-                input_1.type = "text";
-                input_1.value = currentValue;
-                input_1.classList.add('editing-input');
-                input_1.addEventListener('blur', function () {
-                    currentElement.textContent = input_1.value;
-                    currentElement.style.display = 'inline';
-                    input_1.remove();
-                });
-                currentElement.style.display = 'none';
-                (_a = currentElement.parentNode) === null || _a === void 0 ? void 0 : _a.insertBefore(input_1, currentElement);
-                input_1.focus();
-            }
-        });
-    });
-}
